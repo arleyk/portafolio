@@ -29,16 +29,54 @@ function showResults() {
     googleAnimation.classList.add('hidden');
     googleResults.classList.remove('hidden');
     renderResults();
+    setupNavigation();
+}
+
+function renderImages() {
+    const images = [
+        { src: 'assets/Sin título.png', alt: 'Sin título' },
+        { src: 'assets/1.jpg', alt: 'Imagen 1' }
+    ];
+    resultsList.innerHTML = '';
+    resultsList.className = 'images-grid';
+    googleResults.classList.add('has-images');
+    images.forEach(img => {
+        const item = document.createElement('div');
+        item.className = 'image-item';
+        item.innerHTML = `
+            <img src="${img.src}" alt="${img.alt}" class="result-image">
+            <div class="image-title">${img.alt}</div>
+        `;
+        resultsList.appendChild(item);
+    });
+}
+
+function setupNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            const filter = link.getAttribute('data-filter');
+            if (filter === 'images') {
+                renderImages();
+            } else {
+                resultsList.className = '';
+                googleResults.classList.remove('has-images');
+                renderResults();
+            }
+        });
+    });
 }
 
 function renderResults() {
-    // Ejemplo de proyectos
+    // Proyectos del portafolio
     const projects = [
-        { title: 'Portafolio Web', link: 'https://ejemplo.com', desc: 'Proyecto de portafolio personal.' },
-        { title: 'Tienda Online', link: 'https://ejemplo.com', desc: 'E-commerce de ejemplo.' },
-        { title: 'Blog de Tecnología', link: 'https://ejemplo.com', desc: 'Blog sobre desarrollo y tecnología.' },
-        { title: 'App de Tareas', link: 'https://ejemplo.com', desc: 'Aplicación para gestión de tareas.' },
-        { title: 'Juego Interactivo', link: 'https://ejemplo.com', desc: 'Juego web simple y divertido.' }
+        { title: 'ACME Bank', link: 'https://acme-bank-qsjbggo9r-arleyks-projects.vercel.app/', desc: 'Aplicación bancaria moderna con gestión de cuentas y transacciones.' },
+        { title: 'CineMatch', link: 'https://proyecto-peliculas-five.vercel.app/', desc: 'Plataforma de recomendación de películas personalizada basada en cuestionarios.' },
+        { title: 'Proyecto SER', link: 'https://proyecto-ser.vercel.app/', desc: 'Sistema de gestión y administración de proyectos.' },
+        { title: 'HappyFeet Veterinaria', link: 'https://github.com/arleyk/HappyFeet_Veterinaria_EstupinanArley', desc: 'Sistema de gestión veterinaria con Java, MySQL y arquitectura MVC para administración de mascotas, citas y facturación.' }
     ];
     resultsList.innerHTML = '';
     projects.forEach(proj => {
