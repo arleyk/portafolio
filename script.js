@@ -76,7 +76,8 @@ function renderResults() {
         { title: 'ACME Bank', link: 'https://acme-bank-qsjbggo9r-arleyks-projects.vercel.app/', desc: 'Aplicación bancaria moderna con gestión de cuentas y transacciones.' },
         { title: 'CineMatch', link: 'https://proyecto-peliculas-five.vercel.app/', desc: 'Plataforma de recomendación de películas personalizada basada en cuestionarios.' },
         { title: 'Proyecto SER', link: 'https://proyecto-ser.vercel.app/', desc: 'Sistema de gestión y administración de proyectos.' },
-        { title: 'HappyFeet Veterinaria', link: 'https://github.com/arleyk/HappyFeet_Veterinaria_EstupinanArley', desc: 'Sistema de gestión veterinaria con Java, MySQL y arquitectura MVC para administración de mascotas, citas y facturación.' }
+        { title: 'HappyFeet Veterinaria', link: 'https://github.com/arleyk/HappyFeet_Veterinaria_EstupinanArley', desc: 'Sistema de gestión veterinaria con Java, MySQL y arquitectura MVC para administración de mascotas, citas y facturación.' },
+        { title: 'JWT Bodegas', link: 'https://github.com/arleyk/jwt_bodegas', desc: 'Sistema de gestión de bodegas con autenticación JWT, desarrollado con Java, JavaScript, HTML y CSS.' }
     ];
     resultsList.innerHTML = '';
     projects.forEach(proj => {
